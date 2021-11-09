@@ -11,7 +11,7 @@ export default function nodeGyp ( options ) {
 	return {
         name: 'node-gyp',
 
-        resolveAssetUrl(options) {
+        resolveFileUrl(options) {
             if ( extname(options.moduleId) !== '.node') return null;
             return `require('${options.relativeAssetPath}')`;
         },
@@ -24,7 +24,7 @@ export default function nodeGyp ( options ) {
             const filePath = join(binaryDir, fileName);
 
             const data = fs.readFileSync(id);
-            const assetId = this.emitAsset(filePath, data);
+            const assetId = this.emitFile(filePath, data);
             const code = `export default import.meta.ROLLUP_ASSET_URL_${assetId}.default;`;
 
             return {
