@@ -25,7 +25,7 @@ export default function nodeGyp ( options ) {
 
             const data = fs.readFileSync(id);
             const assetId = this.emitAsset(filePath, data);
-            const code = `export default import.meta.ROLLUP_ASSET_URL_${assetId}.default;`;
+            const code = `export default import.meta.ROLLUP_FILE_URL_${assetId}.default;`;
 
             return {
                 code,
